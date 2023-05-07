@@ -1,5 +1,4 @@
 import sys
-
 import data
 import statistics
 
@@ -8,11 +7,10 @@ def print_stats(dt, subtitle, features, path, is_all, which_feature):
     print(subtitle + ":")
     statistic_functions = [statistics.calc_mean, statistics.calc_stdv]
     statistic_functions_joint = [statistics.calc_covariance]
-
     df = dt
     if is_all == 0:
-        filter = data.filter_by_feature(dt, features[which_feature], {1})
-        df = filter[0]
+        filtered = data.filter_by_feature(dt, features[which_feature], {1})
+        df = filtered[0]
     data.print_details(df, features[2:], statistic_functions)
     data.print_joint_details(df, features[3:], statistic_functions_joint, "Cov(t1, cnt)")
 
