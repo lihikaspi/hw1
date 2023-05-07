@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 def calc_mean(values):
     n = len(values)
     sum = 0
@@ -16,6 +17,7 @@ def calc_stdv(values):
         sum += (values[i] - mean) ** 2
     return sqrt(sum/(n-1))
 
+
 def calc_covariance(values1, values2):
     n = len(values1)
     mean1 = calc_mean(values1)
@@ -25,9 +27,9 @@ def calc_covariance(values1, values2):
         sum += (values1[i] - mean1) * (values2[i] - mean2)
     return sum/(n-1)
 
+
 def population_statistics(feature_description, data, treatment, target, threshold, is_above, statistic_functions):
-    print(feature_description + ":\n")
-    print(target + ": ")
+    print(feature_description)
     values_treatment = data[treatment]
     values_target = data[target]
     new_list = []
@@ -40,8 +42,8 @@ def population_statistics(feature_description, data, treatment, target, threshol
             if values_treatment[i] <= threshold:
                 new_list.append(values_target[i])
 
-    for func in statistic_functions:
-        print(func(new_list)) # 2 digits after dot
+    print(target + ": " + "%.2f" % round(statistic_functions[0](new_list), 2)
+          + ", %.2f" % round(statistic_functions[1](new_list), 2))
 
 
 
