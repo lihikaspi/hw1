@@ -19,7 +19,7 @@ def print_stats(subtitle, data, features, path, is_all, which_feature):
     data.print_joint_details(df, features[3:], statistic_functions_joint, "cov(t1,cnt)")
 
 def main(argv):
-    path = "C:\Users\lihi\OneDrive - Technion\שנה א\מבוא להנדסת נתונים\HW1\london.csv"
+    path = argv[1];
     features = ["season", "is_holiday", "hum", "t1", "cnt"]
     print("Question 1:\n")
     print_stats("Summer", data, features, path, 0, 0)
